@@ -1,0 +1,12 @@
+name: Print 1234 Workflow
+
+on:
+  workflow_dispatch:  # Triggered by another workflow
+
+jobs:
+  print-number:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print "1234"
+        run: echo "1234"
