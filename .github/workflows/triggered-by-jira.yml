@@ -14,10 +14,11 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const octokit = github.getOctokit(process.env.PAT);
+            const token = process.env.PAT;
+            const octokit = require('@actions/github').getOctokit(token);
             await octokit.rest.repos.createDispatchEvent({
-              owner: 'deepak-mathpal',
-              repo: 'safe-deployments',
+              owner: 'TARGET_OWNER',
+              repo: 'TARGET_REPO',
               event_type: 'trigger-event',
               client_payload: {
                 tag: context.payload.release.tag_name,
