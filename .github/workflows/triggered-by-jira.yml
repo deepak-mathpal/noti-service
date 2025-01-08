@@ -15,8 +15,8 @@ jobs:
         with:
           script: |
             await github.rest.repos.createDispatchEvent({
-              owner: 'TARGET_OWNER',
-              repo: 'TARGET_REPO',
+              owner: 'deepak-mathpal',
+              repo: 'safe-deployments',
               event_type: 'trigger-event',
               client_payload: {
                 release_tag: context.payload.release.tag_name,
