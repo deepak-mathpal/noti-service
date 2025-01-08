@@ -17,8 +17,8 @@ jobs:
             const token = process.env.PAT;
             const octokit = require('@actions/github').getOctokit(token);
             await octokit.rest.repos.createDispatchEvent({
-              owner: 'TARGET_OWNER',
-              repo: 'TARGET_REPO',
+              owner: 'deepak-mathpal',
+              repo: 'safe-deployments',
               event_type: 'trigger-event',
               client_payload: {
                 tag: context.payload.release.tag_name,
