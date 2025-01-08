@@ -1,4 +1,4 @@
-name: Print 1234 Workflow
+name: Trigger Target Workflow
 
 on:
   release:
@@ -6,9 +6,23 @@ on:
       - published
 
 jobs:
-  print-number:
+  trigger:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print "1234"
-        run: echo "1234"
+      - name: Trigger target repository workflow
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const octokit = github.getOctokit(process.env.PAT);
+            await octokit.rest.repos.createDispatchEvent({
+              owner: 'deepak-mathpal',
+              repo: 'safe-deployments',
+              event_type: 'trigger-event',
+              client_payload: {
+                tag: context.payload.release.tag_name,
+                release_name: context.payload.release.name
+              }
+            });
+        env:
+          PAT: ${{ secrets.PAT }}
