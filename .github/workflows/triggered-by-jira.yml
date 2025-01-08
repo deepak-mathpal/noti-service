@@ -1,7 +1,9 @@
 name: Print 1234 Workflow
 
 on:
-  workflow_dispatch:  # Triggered by another workflow
+  release:
+    types:
+      - published
 
 jobs:
   print-number:
