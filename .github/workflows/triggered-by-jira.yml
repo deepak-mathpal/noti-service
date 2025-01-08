@@ -1,4 +1,4 @@
-name: Trigger Target Workflow
+name: Source Workflow
 
 on:
   release:
@@ -10,18 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger target repository workflow
+      - name: Trigger Target Repository Workflow
         uses: actions/github-script@v6
         with:
           script: |
-            const token = process.env.PAT;
-            const octokit = require('@actions/github').getOctokit(token);
-            await octokit.rest.repos.createDispatchEvent({
-              owner: 'deepak-mathpal',
-              repo: 'safe-deployments',
+            await github.rest.repos.createDispatchEvent({
+              owner: 'TARGET_OWNER',
+              repo: 'TARGET_REPO',
               event_type: 'trigger-event',
               client_payload: {
-                tag: context.payload.release.tag_name,
+                release_tag: context.payload.release.tag_name,
                 release_name: context.payload.release.name
               }
             });
