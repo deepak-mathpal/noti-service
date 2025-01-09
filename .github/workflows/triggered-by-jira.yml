@@ -2,6 +2,8 @@ name: Trigger 2nd Repo Workflow
 
 on:
   workflow_dispatch:
+  release:
+      types: published
 
 jobs:
   trigger-2nd-repo:
