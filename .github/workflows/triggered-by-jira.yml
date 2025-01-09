@@ -7,17 +7,12 @@ on:
       - published
 
 jobs:
-    job_name:                   
-        runs-on: ubuntu-latest     
-        
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v4
-          
-    build-and-push:
-      runs-on: ubuntu-latest
+  job_name:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Trigger Target Repository Workflow
-          uses: deepak-mathpal/newsafe/.github/workflows/triggered-by-jira.yml@main
-       
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+  build-and-push:
+    uses: deepak-mathpal/newsafe/.github/workflows/triggered-by-jira.yml@main
