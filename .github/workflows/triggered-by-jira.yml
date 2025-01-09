@@ -18,4 +18,4 @@ jobs:
           ref: main 
 
   build-and-push:
-    uses: .github/workflows/triggered-by-jira.yml@main
+    uses: deepak-mathpal/newsafe/.github/workflows/triggered-by-jira.yml@main
