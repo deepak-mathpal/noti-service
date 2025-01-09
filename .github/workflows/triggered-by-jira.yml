@@ -19,3 +19,4 @@ jobs:
 
   build-and-push:
     uses: deepak-mathpal/newsafe/.github/workflows/triggered-by-jira.yml@main
+    secrets: ${{ secrets.PAT }}
