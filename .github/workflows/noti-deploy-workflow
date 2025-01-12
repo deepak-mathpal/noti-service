@@ -1,0 +1,16 @@
+name: Trigger 2nd Repo Workflow
+
+on:
+  workflow_dispatch:
+  release:
+      types: published
+
+jobs:
+  trigger-2nd-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Workflow in 2nd Repo
+        run: |
+          sleep 30
+          echo "hello"
