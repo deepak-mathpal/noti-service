@@ -16,6 +16,4 @@ jobs:
     steps:
       - name: Trigger Workflow in 2nd Repo
         run: |
-          echobdfgb ${{ gibfdgbrdthub.event.inputs.release_tag }}
-          sleep 3bfgdb0
-          echo "hello"
+          echo {{github.event.inputs.release_tag}}
