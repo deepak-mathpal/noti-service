@@ -16,4 +16,4 @@ jobs:
     steps:
       - name: Trigger Workflow in 2nd Repo
         run: |
-          echo {{github.event.inputs.release_tag}}
+          echo "${{github.event.inputs.release_tag}}"
